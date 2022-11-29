@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"start": "nodemon serve.js"
+    "start": "nodemon serve.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/lmoraesdev/api-rest-express-mongodb#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "^6.7.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

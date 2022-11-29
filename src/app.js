@@ -1,4 +1,10 @@
 import express from "express";
+import db from "./config/dbConnect.js";
+
+db.on("error", console.log.bind(console, "Erro de conexão"));
+db.once("open", () => {
+	console.log("Conexão com o Banco Feita com Sucesso")
+})
 
 const app = express();
 
@@ -34,9 +40,9 @@ app.put("/livros/:id", (req, res) => {
 });
 
 app.delete("/livros/:id", (req, res) => {
-	let{id} = req.params;
+	let { id } = req.params;
 	let index = buscaLivro(id);
-	livros.splice(index, 1)
+	livros.splice(index, 1);
 	res.json(`Livro ${id} removido com Sucesso`);
 });
 
