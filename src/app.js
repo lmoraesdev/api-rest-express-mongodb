@@ -1,6 +1,7 @@
 import express from "express";
 import db from "./config/dbConnect.js";
 import livros from "./models/Livro.js";
+import routes from "./routes/index.js"
 
 db.on("error", console.log.bind(console, "Erro de conexão"));
 db.once("open", () => {
@@ -11,6 +12,8 @@ const app = express();
 
 app.use(express.json());
 
+routes(app)
+
 // /* Creating a constant variable called livros and assigning it an array of
 /* Creating a constant variable called livros and assigning it an array of objects. */
 // objects. */
@@ -20,15 +23,11 @@ app.use(express.json());
 // 	{ id: 2, titulo: "O Hobbit" },
 // ];
 
-app.get("/", (req, res) => {
-	res.status(200).send("Curso de Node");
-});
 
 app.get("/livros", (req, res) => {
 	livros.find((err, livros) => {
 		res.status(200).json(livros);
 	});
-	
 });
 
 app.get("/livros/:id", (req, res) => {
