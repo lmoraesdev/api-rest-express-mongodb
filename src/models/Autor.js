@@ -14,3 +14,6 @@ const autorSchema = new mongoose.Schema(
 const autores = mongoose.model("autores", autorSchema)
 
 export default autores
+
+
+//6388d15b38e718d39669a5c2
