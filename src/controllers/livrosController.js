@@ -1,7 +1,6 @@
 import livros from "../models/Livro.js";
 
 class livroController {
-
 	static listarLivros = (req, res) => {
 		livros.find((err, livros) => {
 			res.status(200).json(livros);
@@ -24,10 +23,14 @@ class livroController {
 	static atualizarLivro = (req, res) => {
 		const id = req.params.id;
 
-		livros.findByIdAndUpdate(id, {$set: "req.body"})
+		livros.findByIdAndUpdate(id, { $set: "req.body" }, (err) => {
+			if (!err) {
+				res.status(200).send({ message: "Livros atualizado com sucesso" });
+			} else {
+				res.status(500).send({ message: err.message });
+			}
+		});
+	};
 }
-
-}
-
 
 export default LivroController;
